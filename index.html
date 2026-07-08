@@ -51,14 +51,24 @@ button {
 </div>
 
 <script>
+let savedMessages = JSON.parse(localStorage.getItem("messages")) || [];
+
+let box = document.getElementById("messages");
+
+savedMessages.forEach(function(msg){
+    box.innerHTML += "<p>" + msg + "</p>";
+});
+
 function sendMessage(){
-    let text = document.getElementById("message").value;
+    let input = document.getElementById("message");
+    let text = input.value;
 
     if(text != ""){
-        document.getElementById("messages").innerHTML += 
-        "<p>" + text + "</p>";
+        savedMessages.push("🟢 " + text);
+        localStorage.setItem("messages", JSON.stringify(savedMessages));
 
-        document.getElementById("message").value = "";
+        box.innerHTML += "<p>🟢 " + text + "</p>";
+        input.value = "";
     }
 }
 </script>
