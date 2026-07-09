@@ -47,6 +47,7 @@ button{
 <div id="messages" class="messages"></div>
 <input id="username" placeholder="اكتب اسمك">
 <input id="message" placeholder="اكتب رسالة">
+<button onclick="addEmoji()">😊</button>
 <button onclick="sendMessage()">إرسال</button>
 
 </div>
@@ -76,6 +77,9 @@ const time = now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
 
 socket.send(username + " (" + time + "): " + input.value);
     }
+}
+function addEmoji() {
+    document.getElementById("message").value += "😊";
 }
 </script>
 
